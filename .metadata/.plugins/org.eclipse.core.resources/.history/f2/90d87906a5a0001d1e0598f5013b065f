@@ -1,0 +1,66 @@
+package com.org.license.service;
+
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.org.feign.OrganizationOpenFeign;
+import com.org.license.model.License;
+import com.org.license.model.Organization;
+import com.org.license.repo.LicenseRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class LicenseService {
+	
+	@Autowired
+	private LicenseRepository licenseRepository;
+	
+	@Autowired
+	private OrganizationOpenFeign openFeign;
+
+	public License getLicense(String licenseId, String organizationId){
+		License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
+		if (null == license) {
+			throw new IllegalArgumentException("License not present");	
+		}
+		
+		log.info("Getting Organization Data");
+		//return license.withComment(config.getProperty());
+		Organization organization = openFeign.getOrganization(organizationId);
+		license.setOrganizationId(organization.getId());
+		return license;
+	}
+
+	public License createLicense(License license){
+		license.setLicenseId(UUID.randomUUID().toString());
+		license.setLicenseType("License 1");
+		//license.setOrganizationId("");
+		licenseRepository.save(license);
+
+		//return license.withComment(config.getProperty());
+		return license;
+	}
+
+	public License updateLicense(License license){
+		licenseRepository.save(license);
+
+		//return license.withComment(config.getProperty());
+		return license;
+	}
+
+	public String deleteLicense(String licenseId){
+		Optional<License> licenseById = this.licenseRepository.findById(licenseId);
+	
+		licenseById.ifPresent(i -> i.setComment("License Deleted"));
+		return "License Deleted";
+	}
+	
+	
+
+}

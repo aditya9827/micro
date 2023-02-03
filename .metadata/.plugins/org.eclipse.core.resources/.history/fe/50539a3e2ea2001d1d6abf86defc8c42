@@ -1,0 +1,5 @@
+package com.org.license.kafka;
+
+public class KafkaMessageConsumer {
+
+}

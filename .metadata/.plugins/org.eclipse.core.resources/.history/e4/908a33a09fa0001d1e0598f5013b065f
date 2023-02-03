@@ -1,0 +1,5 @@
+package com.org.repo;
+
+public interface OrganizationRepository {
+
+}

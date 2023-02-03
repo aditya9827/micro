@@ -1,0 +1,9 @@
+package com.org.license.repo;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.org.license.model.License;
+
+public interface LicenseRepository extends CrudRepository<License, String>{
+
+}

@@ -1,0 +1,5 @@
+package com.org.feign;
+
+public interface OrganizationOpenFeign {
+
+}

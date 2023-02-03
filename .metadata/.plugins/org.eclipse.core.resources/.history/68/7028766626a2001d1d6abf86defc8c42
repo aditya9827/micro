@@ -1,0 +1,9 @@
+package com.org.model;
+
+public class KafkaMessageEvent {
+	
+	private EventType eventType;
+	private String organizationId;
+	
+
+}

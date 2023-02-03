@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active:
+    - native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+          - file:///Users/aditya/Documents/Workspaces/Microservices/normal
+    
+server:
+  port: 8071

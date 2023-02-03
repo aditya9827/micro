@@ -1,0 +1,23 @@
+package com.org.license.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.org.license.model.Organization;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
+@FeignClient(name = "org-service")
+public interface OrganizationOpenFeign {
+	
+	@CircuitBreaker(name = "org_service", fallbackMethod = "fallBackGetOrganization")
+	@GetMapping(path = "/v1/organization/orgId/{organizationId}")
+	public Organization getOrganization(@PathVariable ("organizationId") String orgId);
+	
+	@GetMapping(path = "/v1/organization/orgId/{organizationId}")
+	public Organization fallBackGetOrganization(@PathVariable ("organizationId") String orgId);
+	
+	
+
+}

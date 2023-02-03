@@ -1,0 +1,16 @@
+package com.org.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.org.license.model.Organization;
+
+@FeignClient
+public interface OrganizationOpenFeign {
+	
+	@GetMapping(path = "orgId/{organizationId}")
+	public ResponseEntity<Organization> getOrganization(@PathVariable ("organizationId") String orgId)
+
+}

@@ -1,0 +1,36 @@
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8082/eureka
+  instance:
+    prefer-ip-address: true
+server:
+  port: 8083
+spring:
+  application:
+    name: org-service
+  cloud:
+    stream:
+      bindings:
+        producer-out-0:
+          destination: organization-events
+      kafka:
+        streams:
+          binder:
+            brokers: localhost:9092
+  datasource:
+    initialize: false
+    name: org-service-database
+    password: pass
+    url: jdbc:h2:~/org-service-database;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+    username: sa
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update

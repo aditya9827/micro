@@ -1,0 +1,14 @@
+spring.application.name=license-server
+server.port=7080
+
+# JPA Property
+
+spring.jpa.generate-ddl=false
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.datasource.name=licensing-service-database
+spring.datasource.initialize=false
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:~/licensing-service-database;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+spring.datasource.username=sa
+spring.datasource.password=pass

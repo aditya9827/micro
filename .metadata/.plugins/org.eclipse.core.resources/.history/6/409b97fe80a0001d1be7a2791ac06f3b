@@ -1,0 +1,5 @@
+package com.org.license.repo;
+
+public interface LicenseRepository {
+
+}
