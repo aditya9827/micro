@@ -49,6 +49,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<activeprofile>dev</activeprofile>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>

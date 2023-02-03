@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class KafkaMessageConsumer {
 
-	@Bean
+	//@Bean
 	public Consumer<KafkaMessageEvent> organizationEventConsumer() {
 
 		return message -> log.info("Incoming Message : {}, EventType : {}", message.getOrganizationId(),
