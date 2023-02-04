@@ -2,6 +2,8 @@ version: "3.9"
 services:
   eureka-service:
     image: eureka-server:latest
+    environment:
+      - "SPRING.PROFILES.ACTIVE=docker"
     ports:
       - "8082:8082"
     networks:
@@ -9,6 +11,8 @@ services:
 
   organization-service:
     image: organization-service:latest
+    environment:
+      - "SPRING.PROFILES.ACTIVE=docker"
     ports:
       - "8083:8083"
     depends_on:
@@ -19,6 +23,8 @@ services:
 
   license-service:
     image: licensing-service:latest
+    environment:
+      - "SPRING.PROFILES.ACTIVE=docker"
     ports:
       - "8081:8081"
     depends_on:
