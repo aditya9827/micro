@@ -51,9 +51,15 @@
 	</dependencyManagement>
 	<profiles>
 		<profile>
-			<id>dev</id>
+			<id>local</id>
 			<properties>
-				<activeprofile>dev</activeprofile>
+				<activeprofile>local</activeprofile>
+			</properties>
+		</profile>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<activeprofile>docker</activeprofile>
 			</properties>
 		</profile>
 	</profiles>
