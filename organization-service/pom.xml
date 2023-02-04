@@ -84,6 +84,21 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<activeprofile>local</activeprofile>
+			</properties>
+		</profile>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<activeprofile>docker</activeprofile>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
