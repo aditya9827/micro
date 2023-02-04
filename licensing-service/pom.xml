@@ -89,6 +89,21 @@
 <!--            <artifactId>spring-cloud-stream-binder-kafka</artifactId>-->
 <!--        </dependency>-->
 	</dependencies>
+	
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<activeprofile>local</activeprofile>
+			</properties>
+		</profile>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<activeprofile>docker</activeprofile>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
