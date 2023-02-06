@@ -9,14 +9,29 @@ services:
     networks:
       - microservice-network
 
+  database:
+    image: mysql:latest
+    container_name: mysql-dev
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_DATABASE=microservice-db
+    ports:
+      - "3306:3306"
+    networks:
+      - microservice-network
+
   organization-service:
     image: organization-service:latest
     environment:
-      - "SPRING.PROFILES.ACTIVE=docker"
+      - SPRING.PROFILES.ACTIVE=docker
+      - SPRING.DATASOURCE.USERNAME=root
+      - SPRING.DATASOURCE.PASSWORD=admin123
     ports:
       - "8083:8083"
     depends_on:
       eureka-service:
+        condition: service_started
+      database:
         condition: service_started
     networks:
       - microservice-network
@@ -24,11 +39,15 @@ services:
   license-service:
     image: licensing-service:latest
     environment:
-      - "SPRING.PROFILES.ACTIVE=docker"
+      - SPRING.PROFILES.ACTIVE=docker
+      - SPRING.DATASOURCE.USERNAME=root
+      - SPRING.DATASOURCE.PASSWORD=admin123
     ports:
       - "8081:8081"
     depends_on:
       eureka-service:
+        condition: service_started
+      database:
         condition: service_started
     networks:
       - microservice-network
