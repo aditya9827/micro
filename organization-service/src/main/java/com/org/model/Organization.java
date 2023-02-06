@@ -2,6 +2,8 @@ package com.org.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Builder;
@@ -19,7 +21,8 @@ import lombok.ToString;
 public class Organization {
 	
 	@Id
-	@Column(name = "ORG_ID")
+	@Column(name = "ORGANIZATION_ID")
+	@GeneratedValue(strategy = GenerationType.UUID)
 	private String orgId;
 	
 	@Column(name = "ORG_NAME", nullable =  false)

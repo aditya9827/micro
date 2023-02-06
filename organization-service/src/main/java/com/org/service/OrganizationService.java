@@ -26,7 +26,7 @@ public class OrganizationService {
 	}
 	
 	public Organization createOrg(Organization org) {
-		org.setOrgId(UUID.randomUUID().toString());
+		//org.setOrgId(UUID.randomUUID().toString());
 		return this.organizationRepository.save(org);
 	}
 	
