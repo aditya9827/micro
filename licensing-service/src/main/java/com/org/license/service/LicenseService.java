@@ -38,8 +38,8 @@ public class LicenseService {
 	}
 
 	public License createLicense(License license){
-		license.setLicenseId(UUID.randomUUID().toString());
-		license.setLicenseType("License 1");
+		//license.setLicenseId(UUID.randomUUID().toString());
+		//license.setLicenseType("License 1");
 		//license.setOrganizationId("");
 		licenseRepository.save(license);
 

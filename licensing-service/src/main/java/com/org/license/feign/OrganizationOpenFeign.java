@@ -11,12 +11,11 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 @FeignClient(name = "org-service")
 public interface OrganizationOpenFeign {
 	
-	@CircuitBreaker(name = "org_service", fallbackMethod = "fallBackGetOrganization")
+	@CircuitBreaker(name = "org_service")
 	@GetMapping(path = "/v1/organization/orgId/{organizationId}")
 	public Organization getOrganization(@PathVariable ("organizationId") String orgId);
 	
-	@GetMapping(path = "/v1/organization/orgId/{organizationId}")
-	public Organization fallBackGetOrganization(@PathVariable ("organizationId") String orgId);
+	
 	
 	
 
