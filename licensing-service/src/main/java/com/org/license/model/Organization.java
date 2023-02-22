@@ -8,7 +8,7 @@ import lombok.Setter;
 
 public class Organization {
 	
-	private String id;
+	private String orgId;
 	private String name;
 	private String contactName;
 	private String contactEmail;

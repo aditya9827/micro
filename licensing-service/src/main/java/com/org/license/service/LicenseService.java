@@ -24,7 +24,7 @@ public class LicenseService {
 	@Autowired
 	private OrganizationOpenFeign openFeign;
 
-	public License getLicense(String licenseId, String organizationId){
+	public License getLicense(String licenseId, String organizationName){
 		License license = licenseRepository.findByLicenseId(licenseId);
 		if (null == license) {
 			throw new IllegalArgumentException("License not present");	
@@ -32,15 +32,19 @@ public class LicenseService {
 		
 		log.info("Getting Organization Data");
 		//return license.withComment(config.getProperty());
-		Organization organization = openFeign.getOrganization(organizationId);
-		license.setOrganizationId(organization.getName());
+		Organization organization = openFeign.getOrganization(organizationName);
+		license.setOrganizationId(organization.getOrgId());
 		return license;
 	}
 
-	public License createLicense(License license){
+	public License createLicense(License license, String organizationName){
 		//license.setLicenseId(UUID.randomUUID().toString());
-		//license.setLicenseType("License 1");
-		//license.setOrganizationId("");
+		
+		log.info("Getting Organization Data");
+		//return license.withComment(config.getProperty());
+		Organization organization = openFeign.getOrganization(organizationName);
+		license.setOrganizationId(organization.getOrgId());
+		
 		licenseRepository.save(license);
 
 		//return license.withComment(config.getProperty());

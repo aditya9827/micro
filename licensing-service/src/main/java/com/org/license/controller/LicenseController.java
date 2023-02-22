@@ -18,7 +18,7 @@ import com.org.license.service.LicenseService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping(value="v1/organization/{organizationId}/license")
+@RequestMapping(value="v1/organization/{organizationName}/license")
 //@RequestMapping(path= "v1/license")
 @Slf4j
 public class LicenseController {
@@ -27,10 +27,10 @@ public class LicenseController {
 	private LicenseService licenseService;
 
 	@GetMapping(value="/{licenseId}")
-	public ResponseEntity<License> getLicense( @PathVariable("organizationId") String organizationId,
+	public ResponseEntity<License> getLicense( @PathVariable("organizationName") String organizationName,
 			@PathVariable("licenseId") String licenseId) {
 		
-		License license = licenseService.getLicense(licenseId, organizationId);
+		License license = licenseService.getLicense(licenseId, organizationName);
 //		license.add( 
 //				linkTo(methodOn(LicenseController.class).getLicense(organizationId, license.getLicenseId())).withSelfRel(),
 //				linkTo(methodOn(LicenseController.class).createLicense(organizationId, license, null)).withRel("createLicense"),
@@ -47,8 +47,8 @@ public class LicenseController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<License> createLicense(@RequestBody License request) {
-		return ResponseEntity.ok(licenseService.createLicense(request));
+	public ResponseEntity<License> createLicense(@PathVariable("organizationName") String organizationName, @RequestBody License request) {
+		return ResponseEntity.ok(licenseService.createLicense(request, organizationName));
 	}
 
 	@DeleteMapping(value="/{licenseId}")

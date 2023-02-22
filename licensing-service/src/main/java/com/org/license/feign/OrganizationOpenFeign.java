@@ -12,8 +12,8 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 public interface OrganizationOpenFeign {
 	
 	@CircuitBreaker(name = "org_service")
-	@GetMapping(path = "/v1/organization/orgId/{organizationId}")
-	public Organization getOrganization(@PathVariable ("organizationId") String orgId);
+	@GetMapping(path = "/v1/organization/orgName/{orgName}")
+	public Organization getOrganization(@PathVariable ("orgName") String orgId);
 	
 	
 	
