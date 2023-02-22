@@ -35,7 +35,7 @@ public class OrgController {
 	}
 	
 	@GetMapping(path = "orgName/{orgName}")
-	public ResponseEntity<Organization> getOrgByName(@PathVariable ("orgname") String orgName){
+	public ResponseEntity<Organization> getOrgByName(@PathVariable ("orgName") String orgName){
 		return ResponseEntity.ok(this.organizationService.getByName(orgName));
 	}
 	
