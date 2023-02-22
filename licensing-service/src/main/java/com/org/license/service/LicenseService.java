@@ -61,7 +61,10 @@ public class LicenseService {
 	public String deleteLicense(String licenseId){
 		Optional<License> licenseById = this.licenseRepository.findById(licenseId);
 	
-		licenseById.ifPresent(i -> i.setComment("License Deleted"));
+		licenseById.ifPresent(i -> {
+			i.setComment("License Deleted");
+			licenseRepository.save(i);
+		});
 		return "License Deleted";
 	}
 	
