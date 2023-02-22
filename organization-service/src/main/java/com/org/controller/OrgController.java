@@ -56,6 +56,7 @@ public class OrgController {
 	
 	@GetMapping(path = "/test")
 	public String hello() {
+		log.info("Testing");
 		return "Hello World";
 	}
 	

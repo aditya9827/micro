@@ -22,7 +22,7 @@ public class Organization {
 	
 	@Id
 	@Column(name = "ORGANIZATION_ID")
-	@GeneratedValue(strategy = GenerationType.UUID)
+	//@GeneratedValue(strategy = GenerationType.UUID)
 	private String orgId;
 	
 	@Column(name = "ORG_NAME", nullable =  false)
