@@ -1,14 +1,5 @@
 version: "3.9"
 services:
-  eureka-service:
-    image: eureka-server:latest
-    environment:
-      - "SPRING.PROFILES.ACTIVE=docker"
-    ports:
-      - "8082:8082"
-    networks:
-      - microservice-network
-
   database:
     image: mysql:latest
     container_name: mysql-dev
@@ -20,6 +11,25 @@ services:
     networks:
       - microservice-network
 
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+    networks:
+      - microservice-network
+
+  eureka-service:
+    image: eureka-server:latest
+    environment:
+      - "SPRING.PROFILES.ACTIVE=docker"
+    ports:
+      - "8082:8082"
+    depends_on:
+      - zipkin
+    networks:
+      - microservice-network
+
+  
   organization-service:
     image: organization-service:latest
     environment:
@@ -32,6 +42,8 @@ services:
       eureka-service:
         condition: service_started
       database:
+        condition: service_started
+      zipkin:
         condition: service_started
     networks:
       - microservice-network
@@ -48,6 +60,8 @@ services:
       eureka-service:
         condition: service_started
       database:
+        condition: service_started
+      zipkin:
         condition: service_started
     networks:
       - microservice-network
