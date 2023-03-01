@@ -1,6 +1,7 @@
 package com.org.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +25,8 @@ public class OrgController {
 	@Autowired
 	private OrganizationService organizationService;
 	
-//	@Autowired
-//	private StreamBridge streamBridge;
+	@Autowired
+	private StreamBridge streamBridge;
 	
 	@GetMapping(path = "orgId/{organizationId}")
 	public ResponseEntity<Organization> getOrganization(@PathVariable ("organizationId") String orgId){
@@ -50,7 +51,7 @@ public class OrgController {
 														.organizationId(newOrg.getOrgId())
 														.build();
 		
-		//streamBridge.send("producer-out-0", kafkaEvent);
+		streamBridge.send("producer-out-0", kafkaEvent);
 		return ResponseEntity.ok(newOrg);
 	}
 	
