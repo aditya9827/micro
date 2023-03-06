@@ -18,6 +18,32 @@ services:
     networks:
       - microservice-network
 
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    ports:
+      - 2181:2181
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - microservice-network
+
+  kafka:
+    image: bitnami/kafka:latest
+    ports: 
+      - 9093:9093
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092, EXTERNAL://localhost:9093
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+    networks:
+      - microservice-network
+    depends_on:
+      - zookeeper
+
   eureka-service:
     image: eureka-server:latest
     environment:
@@ -39,12 +65,10 @@ services:
     ports:
       - "8083:8083"
     depends_on:
-      eureka-service:
-        condition: service_started
-      database:
-        condition: service_started
-      zipkin:
-        condition: service_started
+      - eureka-service
+      - database
+      - zipkin
+      - kafka
     networks:
       - microservice-network
 
@@ -57,12 +81,10 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      eureka-service:
-        condition: service_started
-      database:
-        condition: service_started
-      zipkin:
-        condition: service_started
+      - eureka-service
+      - database
+      - zipkin
+      - kafka
     networks:
       - microservice-network
 
