@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("/Users/aditya/Documents/Workspaces/Microservices") {
+                dir("/Users/aditya/Documents/Workspaces/Microservices/normal") {
                 sh 'mvn -B -DskipTests clean package'
                 }
             }
