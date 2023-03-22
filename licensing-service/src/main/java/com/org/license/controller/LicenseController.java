@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping(value="v1/organization/{organizationName}/license")
 //@RequestMapping(path= "v1/license")
+@Slf4j
 public class LicenseController {
 	
 	@Autowired
