@@ -48,6 +48,7 @@ public class LicenseController {
 	
 	@PostMapping
 	public ResponseEntity<License> createLicense(@PathVariable("organizationName") String organizationName, @RequestBody License request) {
+		log.info("Adding a new license");
 		return ResponseEntity.ok(licenseService.createLicense(request, organizationName));
 	}
 
