@@ -53,6 +53,7 @@ public class LicenseController {
 
 	@DeleteMapping(value="/{licenseId}")
 	public ResponseEntity<String> deleteLicense(@PathVariable("licenseId") String licenseId) {
+		log.info("Deleting License ");
 		return ResponseEntity.ok(licenseService.deleteLicense(licenseId));
 	}
 
