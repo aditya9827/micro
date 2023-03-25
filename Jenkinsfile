@@ -20,8 +20,8 @@ pipeline {
         }
         stage('docker push image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'docker-hubPassword', usernameVariable: 'docker-hubUser')]) {
+            sh "docker login -u ${env.docker-hubUser} -p ${env.docker-hubPassword}"
             sh 'docker push aditya9827/licensing-service:latest'
             }
             }
