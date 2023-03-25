@@ -18,6 +18,14 @@ pipeline {
                 }
             }
         }
+        stage('docker push image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+            sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+            sh 'docker push aditya9827/licensing-service:latest'
+            }
+            }
+        }
      }
     post {
        always {
