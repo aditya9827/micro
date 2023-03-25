@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("/Users/aditya/Documents/Workspaces/Microservices/normal/licensing-service") {
-                sh 'mvn -B -DskipTests clean package jib:dockerBuild'
+                sh 'mvn -B -DskipTests clean package jib:build'
                 }
             }
         }
