@@ -3,7 +3,7 @@ pipeline{
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub-aditya)
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub-aditya')
         }
 
     stages {
@@ -15,12 +15,7 @@ pipeline{
             }
         }
 
-        stage('Push') {
-
-            steps {
-                sh 'docker push bharathirajatut/nodeapp:latest'
-            }
-        }
+        
     }
 
     post {
