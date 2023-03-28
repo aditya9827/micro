@@ -1,12 +1,32 @@
-pipeline {
-    agent {
-        docker { image 'node:16.13.1-alpine' }
-    }
+pipeline{
+
+    agent any
+
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub-aditya)
+        }
+
     stages {
-        stage('Test') {
+
+        stage('Login') {
+
             steps {
-                sh 'node --version'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-    } 
+
+        stage('Push') {
+
+            steps {
+                sh 'docker push bharathirajatut/nodeapp:latest'
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker logout'
+        }
+    }
+
 }
