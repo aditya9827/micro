@@ -123,6 +123,12 @@
 				<activeprofile>docker</activeprofile>
 			</properties>
 		</profile>
+		<profile>
+			<id>aws</id>
+			<properties>
+				<activeprofile>aws</activeprofile>
+			</properties>
+		</profile>
 	</profiles>
 	<build>
 		<plugins>
