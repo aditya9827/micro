@@ -1,12 +1,23 @@
 pipeline{
 
     agent any
+    tools {
+        maven "MAVEN"
+        jdk "JDK"
+    }
 
     environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub-aditya')
         }
 
     stages {
+
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
+            }
+        }
 
         stage('Login') {
 
