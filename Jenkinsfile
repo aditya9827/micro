@@ -30,19 +30,13 @@ pipeline{
 
             steps{
                 dir("/Users/aditya/Documents/Workspaces/Microservices/normal/licensing-service") {
-                sh 'mvn -B -DskipTests clean package jib:build'
+                sh 'mvn -B -DskipTests clean package jib:build -Djib.to.auth.username=aditya9827 -Djib.to.auth.password=Aditya@123'
                 }
 
             }
         }
 
-        stage('docker push'){
-
-            steps{
-                sh 'docker push aditya9827/licensing-service:latest'
-            }
-
-        }
+        
 
         
     }
