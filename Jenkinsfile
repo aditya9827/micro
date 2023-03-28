@@ -15,6 +15,24 @@ pipeline{
             }
         }
 
+        stage('build'){
+
+            steps{
+                dir("/Users/aditya/Documents/Workspaces/Microservices/normal/licensing-service") {
+                sh 'mvn -B -DskipTests clean package jib:build'
+                }
+
+            }
+        }
+
+        stage('docker push'){
+
+            steps{
+                sh 'docker push aditya9827/licensing-service:latest'
+            }
+
+        }
+
         
     }
 
