@@ -150,7 +150,9 @@
 <!--					</from>-->
 					<to>
 						<image>${project.artifactId}</image>
+						<credHelper>osxkeychain</credHelper>
 					</to>
+					
 				</configuration>
 			</plugin>
 		</plugins>
