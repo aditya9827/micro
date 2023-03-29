@@ -14,9 +14,9 @@
   	</properties>
 
   	<modules>
-  		<module>eureka-server</module>
+<!--  		<module>eureka-server</module>-->
   		<module>licensing-service</module>
-  		<module>organization-service</module>
+<!--  		<module>organization-service</module>-->
 	</modules>
 	
 </project>
