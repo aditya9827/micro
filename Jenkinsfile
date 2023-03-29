@@ -30,7 +30,7 @@ pipeline{
 
             steps{
                 dir("/Users/aditya/Documents/Workspaces/Microservices/normal/licensing-service") {
-                sh 'mvn -B -DskipTests clean package jib:build -Djib.to.auth.username=aditya9827 -Djib.to.auth.password=Aditya@123'
+                sh 'mvn -B -DskipTests clean package com.google.cloud.tools:jib-maven-plugin:3.3.1:build'
                 }
 
             }
