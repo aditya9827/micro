@@ -148,9 +148,9 @@
 <!--					<from>-->
 <!--						<image>openjdk:17-jdk-slim</image>-->
 <!--					</from>-->
-					<to>
-						<image>${project.artifactId}</image>
-					</to>
+<!--					<to>-->
+<!--						<image>${project.artifactId}</image>-->
+<!--					</to>-->
 				</configuration>
 			</plugin>
 		</plugins>
