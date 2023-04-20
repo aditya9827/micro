@@ -1,5 +1,7 @@
 package com.org.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +37,7 @@ public class OrgController {
 	}
 	
 	@GetMapping(path = "orgName/{orgName}")
-	public ResponseEntity<Organization> getOrgByName(@PathVariable ("orgName") String orgName){
+	public ResponseEntity<List<Organization>> getOrgByName(@PathVariable ("orgName") String orgName){
 		return ResponseEntity.ok(this.organizationService.getByName(orgName));
 	}
 	

@@ -8,6 +8,6 @@ import com.org.model.Organization;
 
 public interface OrganizationRepository extends CrudRepository<Organization, String>{
 	
-	Organization findByName(String name);
+	List<Organization> findByName(String name);
 
 }
