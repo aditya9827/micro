@@ -87,16 +87,16 @@
 			<artifactId>zipkin-reporter-brave</artifactId>
 		</dependency>
 		<!--  Dependency related to Micrometer tracing  Ends-->
-				<dependency>
-					<groupId>com.h2database</groupId>
-					<artifactId>h2</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>com.mysql</groupId>
-					<artifactId>mysql-connector-j</artifactId>
-					<scope>runtime</scope>
-				</dependency>
+<!--				<dependency>-->
+<!--					<groupId>com.h2database</groupId>-->
+<!--					<artifactId>h2</artifactId>-->
+<!--					<scope>test</scope>-->
+<!--				</dependency>-->
+<!--				<dependency>-->
+<!--					<groupId>com.mysql</groupId>-->
+<!--					<artifactId>mysql-connector-j</artifactId>-->
+<!--					<scope>runtime</scope>-->
+<!--				</dependency>-->
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -115,25 +115,25 @@
 			<properties>
 				<activeprofile>local</activeprofile>
 			</properties>
-<!--			<dependencies>-->
-<!--				<dependency>-->
-<!--					<groupId>com.h2database</groupId>-->
-<!--					<artifactId>h2</artifactId>-->
-<!--				</dependency>-->
-<!--			</dependencies>-->
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+				</dependency>
+			</dependencies>
 		</profile>
 		<profile>
 			<id>docker</id>
 			<properties>
 				<activeprofile>docker</activeprofile>
 			</properties>
-<!--			<dependencies>-->
-<!--				<dependency>-->
-<!--					<groupId>com.mysql</groupId>-->
-<!--					<artifactId>mysql-connector-j</artifactId>-->
-<!--					<scope>runtime</scope>-->
-<!--				</dependency>-->
-<!--			</dependencies>-->
+			<dependencies>
+				<dependency>
+					<groupId>com.mysql</groupId>
+					<artifactId>mysql-connector-j</artifactId>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
 		</profile>
 	</profiles>
 	<build>
